@@ -1,6 +1,7 @@
 // Node Packages
 const Sequelize = require("sequelize");
 
+
 // Create sequelize connection
 const sequelize = new Sequelize("authpw", "root", "root", {
     host: "localhost",
@@ -18,5 +19,6 @@ sequelize.authenticate().then(() => {
 }).catch(err => {
     console.error("Unable to connect to the database:", err);
 });
+
 
 module.exports = sequelize;

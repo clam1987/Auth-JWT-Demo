@@ -6,6 +6,7 @@ const htmlRoutes = require("./routes/htmlRoutes");
 const dotenv = require("dotenv");
 const passport = require("passport");
 
+
 // Global Variables
 const PORT = process.env.PORT || 3001;
 
@@ -25,6 +26,7 @@ app.use(passport.session());
 
 
 // Routes
+app.use("/api", apiRoutes);
 
 
 // Connect To Server
