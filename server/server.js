@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3001;
 dotenv.config();
 
 // DB Config
-// const db = require("./config/connection");
+const db = require("./config/connection");
 
 // BodyParser
 app.use(express.urlencoded({ extended: true }));
