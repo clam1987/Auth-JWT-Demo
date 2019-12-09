@@ -1,25 +1,26 @@
+// Modules
 const path = require("path");
 const router = require("express").Router();
-const User = require("../models/User");
+const passport = require("../config/authentication");
 
+// Setup route to redirect to google to authenticate 
+router.get('/auth/google',
+// scope looks for which kind of data to use to verify and authenticate
+  passport.authenticate('google', { scope: ['profile'] }));
 
+  // Callback route used after token is authenticated 
+router.get('/auth/google/callback', 
+  passport.authenticate('google'),
+  (req, res) => {
+    res.sendFile(path.join(__dirname, "../../htmlClient/secret.html"));
+  });
 
-router.get("/user", (req, res) => {
-    User.findAll().then(user => {
-        res.send(user);
-    });
-});
-
-router.post("/user", (req, res) => {
-// console.log(req.body);
-
-    User.create({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName 
-    }).then(user => {
-        console.log(`${user.firstName} auto-generated ID, ${user.id}`)
-    })
+// Logout route to deserialize
+router.get("/logout", (req,res) => {
+    req.logOut();
+    res.sendFile(path.join(__dirname, "../../htmlClient/index.html"));
 })
+
 
 
 module.exports = router;
