@@ -24,6 +24,10 @@ app.use(cookieSession({
     keys:[process.env.keys]
 }))
 
+// Static Public
+app.use(express.static("public"));
+// app.use(express.static(__dirname + "public"))
+
 // BodyParser
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

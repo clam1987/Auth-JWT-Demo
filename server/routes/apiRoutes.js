@@ -12,13 +12,13 @@ router.get('/auth/google',
 router.get('/auth/google/callback', 
   passport.authenticate('google'),
   (req, res) => {
-    res.sendFile(path.join(__dirname, "../../htmlClient/secret.html"));
+    res.sendFile(path.join(__dirname, "../public/secret.html"));
   });
 
 // Logout route to deserialize
 router.get("/logout", (req,res) => {
     req.logOut();
-    res.sendFile(path.join(__dirname, "../../htmlClient/index.html"));
+    res.sendFile(path.join(__dirname, "../public/index.html"));
 })
 
 
