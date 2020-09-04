@@ -15,12 +15,19 @@ router.get('/auth/google/callback',
     res.sendFile(path.join(__dirname, "../public/secret.html"));
   });
 
+  // Facebook Auth Route
+  router.get("/auth/facebook", passport.authenticate("facebook"));
+
+  // Facebook Auth Route Callback
+  router.get("/auth/facebook/callback", passport.authenticate("facebook"), (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/secret.html"));
+  });
+
 // Logout route to deserialize
 router.get("/logout", (req,res) => {
     req.logOut();
     res.sendFile(path.join(__dirname, "../public/index.html"));
 })
-
 
 
 module.exports = router;
