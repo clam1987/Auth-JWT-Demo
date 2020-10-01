@@ -22,16 +22,16 @@ passport.use(
 );
 
 // Facebook Strat
-passport.use(new FacebookStrategy({
-  clientID: process.env.FACEBOOK_ID,
-  clientSecret: process.env.FACEBOOK_SECRET,
-  callbackURL: "http://localhost:3001/api/auth/facebook/callback"
-},
-(accessToken, refreshToken, profile, done) => {
-  console.log(profile);
- done(null, accessToken, profile);
-}
-));
+// passport.use(new FacebookStrategy({
+//   clientID: process.env.FACEBOOK_ID,
+//   clientSecret: process.env.FACEBOOK_SECRET,
+//   callbackURL: "http://localhost:3001/api/auth/facebook/callback"
+// },
+// (accessToken, refreshToken, profile, done) => {
+//   console.log(profile);
+//  done(null, accessToken, profile);
+// }
+// ));
 
 
 // Handles token login
